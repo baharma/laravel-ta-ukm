@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('event_members', function (Blueprint $table) {
+        Schema::create('member_ukms', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('ukm_id')->references('id')->on('ukms');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->string('member_status')->nullable();
+            $table->foreignId('sertif')->references('id')->on('sertifs');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('event_members');
+        Schema::dropIfExists('member_ukms');
     }
 };

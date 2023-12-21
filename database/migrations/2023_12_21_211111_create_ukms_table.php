@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('absen_member_u_k_m_s', function (Blueprint $table) {
+        Schema::create('ukms', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('image');
+            $table->string('about');
+            $table->string('tlp');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('absen_member_u_k_m_s');
+        Schema::dropIfExists('ukms');
     }
 };
